@@ -4,7 +4,7 @@
 \alias{update_schedule}
 \title{Update EnergyPlus Schedules}
 \usage{
-update_schedule()
+update_schedule(analytic_schedule_filename)
 }
 \description{
 The analytic models produce schedules. We need to update the EnergyPlus schedule files with the new end-uses.

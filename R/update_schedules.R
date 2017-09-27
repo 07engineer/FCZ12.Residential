@@ -9,7 +9,7 @@
 #' @examples
 #' update_schedule()
 
-update_schedule <- function(){
+update_schedule <- function(analytic_schedule_filename){
   energyplus_schedule <- read_csv("Residential_sch.csv") %>%
     mutate(date = as_date(mdy_hm(Schedule)))
   
@@ -18,7 +18,9 @@ update_schedule <- function(){
   
   analytic_schedule_path <- "L:/P/1631/Task 4 - Baseline Profiles/Residential Pre-Processor 091417/Results/Schedules/Final" 
   analytic_schedule_files <- dir(analytic_schedule_path)
-  analytic_schedule <- read_csv(str_c(analytic_schedule_path, analytic_schedule_files[1], sep = "/")) %>% 
+  
+  #analytic_schedule <- read_csv(str_c(analytic_schedule_path, analytic_schedule_files[1], sep = "/")) %>% 
+  analytic_schedule <- read_csv(str_c(analytic_schedule_path, analytic_schedule_filename, sep = "/")) %>% 
     # select(which(names(analytic_schedule) %in% names(energyplus_schedule))) %>% 
     filter(date >= energyplus_start_date, date <= energyplus_end_date)
   

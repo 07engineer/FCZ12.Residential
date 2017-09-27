@@ -11,7 +11,7 @@
 #' update_enduse_coefficients()
 
 
-update_enduse_coefficients <- function(){
+update_enduse_coefficients <- function(coeff_file_name){
   path_coefficients <- "L:/P/1631/Task 4 - Baseline Profiles/Residential Pre-Processor 091417/Data/Constrained Regression Coefficients"
   files_coefficients <- dir(path_coefficients)
   EPD_constituents <- c("Cooking", 
@@ -23,7 +23,7 @@ update_enduse_coefficients <- function(){
                         "Television", 
                         "Washer") 
   
-  coeffs <- read_csv(str_c(path_coefficients, files_coefficients[1], sep = "/")) %>% 
+  coeffs <- read_csv(str_c(path_coefficients, coeff_file_name, sep = "/")) %>% 
     filter(cec_end_use %in% EPD_constituents, year == 2014 )%>% 
     mutate(weight_ratio = weight / sum(weight)) %>% 
     select(cec_end_use, weight_ratio) %>%
