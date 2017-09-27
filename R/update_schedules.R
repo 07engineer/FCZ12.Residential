@@ -3,13 +3,14 @@
 #' The analytic models produce schedules. We need to update the EnergyPlus schedule files with the new end-uses.
 #'
 #'
-#' @param 
+#' @param analytic_schedule_path Path to the analytical schedule files
+#' @param analytic_schedule_filename Name of the file, including .csv
 #' @keywords EnergyPlus, Parametrics, Calibration
 #' @export
 #' @examples
-#' update_schedule()
+#' update_schedule("L:/P/1631/Schedules/Final", "FCZ12_ALL_Usage_Level_LOW_GAS_Schedules.csv")
 
-update_schedule <- function(analytic_schedule_filename){
+update_schedule <- function(analytic_schedule_path, analytic_schedule_filename){
   energyplus_schedule <- read_csv("Residential_sch.csv") %>%
     mutate(date = as_date(mdy_hm(Schedule)))
   
@@ -17,7 +18,7 @@ update_schedule <- function(analytic_schedule_filename){
   energyplus_end_date   = max(energyplus_schedule$date)
   
   analytic_schedule_path <- "L:/P/1631/Task 4 - Baseline Profiles/Residential Pre-Processor 091417/Results/Schedules/Final" 
-  analytic_schedule_files <- dir(analytic_schedule_path)
+  #analytic_schedule_files <- dir(analytic_schedule_path)
   
   #analytic_schedule <- read_csv(str_c(analytic_schedule_path, analytic_schedule_files[1], sep = "/")) %>% 
   analytic_schedule <- read_csv(str_c(analytic_schedule_path, analytic_schedule_filename, sep = "/")) %>% 

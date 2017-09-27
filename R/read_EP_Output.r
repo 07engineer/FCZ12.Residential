@@ -25,7 +25,8 @@ read_EP_Output <- function(fileName){
   }
   
   out <- fixDate(out, "2014")
-  out <- JtoKW(out) %>%
-    mutate(EUI = `ElectricityNet:Facility`)
+  out <- JtoKW(out) 
+  #%>%
+  #  mutate(EUI = `ElectricityNet:Facility`)
 }
 

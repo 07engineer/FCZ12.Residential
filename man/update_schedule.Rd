@@ -4,13 +4,18 @@
 \alias{update_schedule}
 \title{Update EnergyPlus Schedules}
 \usage{
-update_schedule(analytic_schedule_filename)
+update_schedule(analytic_schedule_path, analytic_schedule_filename)
+}
+\arguments{
+\item{analytic_schedule_path}{Path to the analytical schedule files}
+
+\item{analytic_schedule_filename}{Name of the file, including .csv}
 }
 \description{
 The analytic models produce schedules. We need to update the EnergyPlus schedule files with the new end-uses.
 }
 \examples{
-update_schedule()
+update_schedule("L:/P/1631/Schedules/Final", "FCZ12_ALL_Usage_Level_LOW_GAS_Schedules.csv")
 }
 \keyword{Calibration}
 \keyword{EnergyPlus,}
