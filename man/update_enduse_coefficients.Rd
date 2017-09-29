@@ -4,7 +4,7 @@
 \alias{update_enduse_coefficients}
 \title{Update Enduse Coefficients}
 \usage{
-update_enduse_coefficients(coeff_path, coeff_file_name)
+update_enduse_coefficients(coeff_path, coeff_file_name, sections_folder)
 }
 \description{
 End use coefficients are calculated with a regression approach in the analytical calculator. This function reads them in, 

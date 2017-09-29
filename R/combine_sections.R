@@ -11,9 +11,10 @@
 #' combine_sections()
 
 
-combine_sections <- function(run_name){
-  filenames <- str_c("sections", dir("sections"), sep = "/")
+combine_sections <- function(run_name, sections_folder, EP_input_folder){
+  #filenames <- str_c("sections", dir("sections"), sep = "/")
+  filenames <- str_c(sections_folder, dir(sections_folder), sep = "/")
   read_input_files <- sapply(filenames, function(x) read_file(x))
   input_combined <- paste(read_input_files, collapse = "\n")
-  write_file(input_combined, str_c("EP_input", "/", run_name, ".idf"))
+  write_file(input_combined, str_c(EP_input_folder, "/", run_name, ".idf"))
 }

@@ -4,7 +4,7 @@
 \alias{combine_sections}
 \title{Combine EnergyPlus Input File Sections}
 \usage{
-combine_sections(run_name)
+combine_sections(run_name, sections_folder, EP_input_folder)
 }
 \arguments{
 \item{run_name}{Name of the EnergyPlus run}
