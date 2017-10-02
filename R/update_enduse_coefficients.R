@@ -5,16 +5,19 @@
 #'
 
 #' @param 
+#' 
+#' 
+#' 
 #' @keywords EnergyPlus, Parametrics, Calibration
 #' @export
 #' @examples
 #' update_enduse_coefficients()
 
 
-coeff_path = coefficients_path
-coeff_file_name = coefficients_file
+#coeff_path = coefficients_path
+#coeff_file_name = coefficients_file
 
-# update_enduse_coefficients <- function(coeff_path, coeff_file_name, sections_folder){
+update_enduse_coefficients <- function(coeff_path, coeff_file_name, sections_folder){
   
   files_coefficients <- dir(coeff_path)
   EPD_constituents <- c("Cooking", 
@@ -39,8 +42,8 @@ coeff_file_name = coefficients_file
   
   for(i in 1:nrow(coeffs)){
     rows_to_change = grep(coeffs$EP_schedule_name[i], file) + 3
-    #row_replacement = str_c("    =$EPD*", coeffs$weight_ratio[i], ",    !- Watts per Zone Floor Area {W/m2}")
-    row_replacement = str_c("    =$EPD*=$", coeffs$parametric_name[i], ",    !- Watts per Zone Floor Area {W/m2}")
+    row_replacement = str_c("    =$EPD*", coeffs$weight_ratio[i], ",    !- Watts per Zone Floor Area {W/m2}")
+    #row_replacement = str_c("    =$EPD*=$", coeffs$parametric_name[i], ",    !- Watts per Zone Floor Area {W/m2}")
     
     file[rows_to_change] <- row_replacement
   }
