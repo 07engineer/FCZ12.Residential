@@ -42,8 +42,8 @@ update_enduse_coefficients <- function(coeff_path, coeff_file_name, sections_fol
   
   for(i in 1:nrow(coeffs)){
     rows_to_change = grep(coeffs$EP_schedule_name[i], file) + 3
-    row_replacement = str_c("    =$EPD*", coeffs$weight_ratio[i], ",    !- Watts per Zone Floor Area {W/m2}")
-    #row_replacement = str_c("    =$EPD*=$", coeffs$parametric_name[i], ",    !- Watts per Zone Floor Area {W/m2}")
+    #row_replacement = str_c("    =$EPD*", coeffs$weight_ratio[i], ",    !- Watts per Zone Floor Area {W/m2}")
+    row_replacement = str_c("    =$EPD*=$", coeffs$parametric_name[i], ",    !- Watts per Zone Floor Area {W/m2}")
     
     file[rows_to_change] <- row_replacement
   }
