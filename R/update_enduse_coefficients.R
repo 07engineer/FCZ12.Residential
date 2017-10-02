@@ -50,5 +50,6 @@ update_enduse_coefficients <- function(coeff_path, coeff_file_name, sections_fol
 
   file <- str_c(file, collapse = "\r\n")
   write_file(file, file_name)
+  write_csv(coeffs, "enduse_weights.csv")
 }
 
