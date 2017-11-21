@@ -9,7 +9,8 @@
 #' 
 read_EP_Output <- function(fileName){
   out <- read_csv(fileName)
-  out <- out[289:nrow(out),]                                                 #' Delete design days
+  out <- out[49:nrow(out),]                                                 #' Delete design days
+  #out <- out[289:nrow(out),]                                                 #' Delete design days
   names(out)[1] = "date"
   
   fixDate <- function(df, year){                                            #' Add year to the date, format
